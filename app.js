@@ -2,6 +2,26 @@
 //const os = require("os"); //this module information about operating system
 const EventEmitter = require('events');//this represents the eventemitter is a class not a function.
 const Logger = require('./logger');
+const http = require('http');
+//using function
+const server = http.createServer((req,res) => {
+    if(req.url === '/'){
+        res.write("Hello Duniya");
+        res.end();
+    }
+    if(req.url === '/api/courses'){
+        res.write(JSON.stringify([1,2,3]));
+        res.end();
+    }
+});
+//using socket service-->
+//server.on('connection',(socket) =>{
+  //  console.log("New connnection...")
+//});
+
+server.listen(3000);
+console.log("listening on port 3000");
+
 //const freeMemory = os.freemem();
 //const totalMemory = os.totalmem();
 //const osObj = os.uptime();
